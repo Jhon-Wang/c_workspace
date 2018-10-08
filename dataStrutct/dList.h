@@ -3,8 +3,8 @@
 
 typedef struct dNode{
     int data;
-    struct DNode *pre;
-    struct DNode *next;
+    struct dNode *pre;
+    struct dNode *next;
 } DNode;
 
 typedef struct dList{

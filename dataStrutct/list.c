@@ -77,8 +77,17 @@ int clearList(List *list){
 
 
 int destoryList(List *list){
-    clearList(list);
-    free(list->head);
+    Node *head = list->head;
+    Node *p ;
+    if(head==NULL){
+        return 0;
+    }
+    while(head){
+        p = head->next;
+        free(head);
+        head = p;
+    }
+    list->head = NULL;
 }
 
 int findValueIndex(List *list,int value){
@@ -106,6 +115,11 @@ int updateValue(List *list,int index,int value){
 }
 
 int showValues(List *list){
+    if(list->head == NULL){
+        printf("List Has Destory!\n");
+        return -1;
+    }
+
     if(list->size == 0 ){
         printf("is Empty!\n");
     }
@@ -114,7 +128,7 @@ int showValues(List *list){
         p = p->next;
         printf("%d\n",p->data);
     }
-    printf("OUTPUT END!");
+    printf("OUTPUT END!\n");
 }
 
 int main(int argc, char const *argv[])
@@ -126,6 +140,8 @@ int main(int argc, char const *argv[])
     insertNode(&list,0,30);
     deleteNode(&list,0);
     clearList(&list);
+    showValues(&list);
+    destoryList(&list);
     showValues(&list);
     getchar();
     return 0;

@@ -1,4 +1,5 @@
 #include "list.h"
+#include <stdio.h>
 #include <malloc.h>
 
 //初始化
@@ -7,6 +8,8 @@ List initList(){
     List *list = (List *)malloc(sizeof(List));
     Node *head = (Node *)malloc(sizeof(Node));
     
+    head->next = NULL;
+    head->data = 0;
     list->head = head;
     list->size = 0;
 
@@ -25,6 +28,8 @@ int addNode(List *list,int value){
     }
 
     Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
 
     p->next = newNode;
     list->size ++;
@@ -66,13 +71,13 @@ int deleteNode(List *list,int index){
  */ 
 int clearList(List *list){
     while(list->size > 0){
-        deleteNode(&list,0);
+        deleteNode(list,0);
     }
 }
 
 
 int destoryList(List *list){
-    clearList(&list);
+    clearList(list);
     free(list->head);
 }
 
@@ -99,6 +104,33 @@ int updateValue(List *list,int index,int value){
     }
     p->data = value;
 }
+
+int showValues(List *list){
+    if(list->size == 0 ){
+        printf("is Empty!\n");
+    }
+    Node *p = list->head;
+    while(p->next != NULL){
+        p = p->next;
+        printf("%d\n",p->data);
+    }
+    printf("OUTPUT END!");
+}
+
+int main(int argc, char const *argv[])
+{
+
+    List list = initList();
+    addNode(&list,10);
+    addNode(&list,20);
+    insertNode(&list,0,30);
+    deleteNode(&list,0);
+    clearList(&list);
+    showValues(&list);
+    getchar();
+    return 0;
+}
+
 
 
 

@@ -20,6 +20,10 @@ List initList(){
  * 在尾部添加节点
  */ 
 int addNode(List *list,int value){
+    if(list->head == NULL){
+        printf("List Has been destoried ! ");
+        return -1;
+    }
     Node *head = list->head;
     Node *p = head;
 
@@ -39,6 +43,10 @@ int addNode(List *list,int value){
  * 插入节点
  */ 
 int insertNode(List *list,int index,int value){
+    if(index > list->size){
+        
+    }
+
     Node *p = list->head;
     for(int i = 0 ; i < index-1;i++){
         p = p->next;
@@ -140,8 +148,10 @@ int main(int argc, char const *argv[])
     insertNode(&list,0,30);
     deleteNode(&list,0);
     clearList(&list);
+    addNode(&list,10);
     showValues(&list);
     destoryList(&list);
+    addNode(&list,20);
     showValues(&list);
     getchar();
     return 0;

@@ -18,6 +18,9 @@ List initList(){
 
 /**
  * 在尾部添加节点
+ * 限制条件：
+ * 1、线性表已经存在 head 不能为空
+ * 2、这个函数只用于向后添加节点
  */ 
 int addNode(List *list,int value){
     if(list->head == NULL){
@@ -41,10 +44,18 @@ int addNode(List *list,int value){
 
 /**
  * 插入节点
+ * 限制条件
+ * 1、插入的位置必须是0-（n-1）
+ * 2、链表不为空 head 不能为NULL
  */ 
 int insertNode(List *list,int index,int value){
-    if(index > list->size){
-        
+    if(list->head!=NULL){
+        printf("链表为空不能插入");
+        return -1;
+    }
+    if(index >= list->size){
+        printf("下标错误！\n");
+        return -1;
     }
 
     Node *p = list->head;
@@ -60,8 +71,21 @@ int insertNode(List *list,int index,int value){
 
 /**
  * 删除节点
+ * 限制条件
+ * 1、list 不能为空
+ * 2、index 必须是 0-（n-1）
  */ 
 int deleteNode(List *list,int index){
+    if(list->head == NULL){
+        printf("链表为空不能删除");
+        return -1;
+    }
+
+    if(index >= list->size){
+        printf("下标错误！\n");
+        return -1;
+    }
+
     Node *p = list->head;
     for(int i = 0 ; i < index-1;i++){
         p = p->next;

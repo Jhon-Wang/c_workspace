@@ -1,4 +1,5 @@
 #include <malloc.h>
+#include <stdio.h>
 #include "node.h"
 #include "stact.h"
 
@@ -19,14 +20,14 @@ Stact initStact(){
  */ 
 int pop(Stact *stact){
     if(stact->size == 0){
-        printf("为空");
+        printf("empty\n");
         return -1;
     }
-
-    Node *p = stact->head;
+    Node *head = stact->head;
+    Node *p = head;
     p = p->next;
     int value = p->data;
-    stact->head = p->next;
+    head->next = p->next;
     free(p);
     p = NULL;
     stact->size --;
@@ -51,7 +52,17 @@ int push(Stact *stact,int value){
 }
 
 int main(){
+    Stact stact = initStact();
+    push(&stact,10);
+    push(&stact,20);
+    push(&stact,30);
 
+    while(stact.size >0){
+        int value = pop(&stact);
+        printf("%d\n",value);
+    }
+
+    getchar();
 
 
 }

@@ -50,7 +50,7 @@ int addNode(List *list,int value){
  */ 
 int insertNode(List *list,int index,int value){
     if(list->head!=NULL){
-        printf("链表为空不能插入");
+        printf("链表为空不能插入\n");
         return -1;
     }
     if(index >= list->size){
@@ -77,7 +77,7 @@ int insertNode(List *list,int index,int value){
  */ 
 int deleteNode(List *list,int index){
     if(list->head == NULL){
-        printf("链表为空不能删除");
+        printf("链表为空不能删除\n");
         return -1;
     }
 
@@ -170,8 +170,11 @@ int main(int argc, char const *argv[])
     addNode(&list,10);
     addNode(&list,20);
     insertNode(&list,0,30);
+    showValues(&list);
     deleteNode(&list,0);
+    showValues(&list);
     clearList(&list);
+    showValues(&list);
     addNode(&list,10);
     showValues(&list);
     destoryList(&list);

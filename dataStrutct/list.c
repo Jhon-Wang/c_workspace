@@ -24,7 +24,7 @@ List initList(){
  */ 
 int addNode(List *list,int value){
     if(list->head == NULL){
-        printf("List Has been destoried ! ");
+        printf("List Has been destoried !\n ");
         return -1;
     }
     Node *head = list->head;

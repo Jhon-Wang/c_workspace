@@ -1,5 +1,6 @@
 #include <malloc.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "node.h"
 #include "stact.h"
 
@@ -49,6 +50,12 @@ int push(Stact *stact,int value){
 
     stact->size ++;
     
+}
+
+bool isEmpty(Stact *stact){
+    if(stact->size == 0)
+        return true;
+    return false;
 }
 
 int main(){

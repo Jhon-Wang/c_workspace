@@ -1,7 +1,6 @@
 #include <malloc.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "node.h"
 #include "stact.h"
 
 
@@ -73,4 +72,3 @@ int main(){
 
 
 }
-

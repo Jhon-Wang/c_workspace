@@ -1,6 +1,6 @@
 #ifndef _STACT_H_
 #define _STACT_H_
-#include "node.h"
+#include "../node.h"
 
 typedef struct stact{
     int size;

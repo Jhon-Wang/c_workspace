@@ -1,6 +1,6 @@
 #include "list.h"
 #include <stdio.h>
-#include <malloc.h>
+#include <sys/malloc.h>
 
 //初始化
 
